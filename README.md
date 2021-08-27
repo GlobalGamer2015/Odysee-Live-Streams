@@ -9,4 +9,4 @@ nodemon
 Open http://localhost:3000/
 
 ## Want to see it in action?
-(Odysee Live Streams)[https://live.odysee-chatter.com/]
+[Odysee Live Streams](https://live.odysee-chatter.com/)
