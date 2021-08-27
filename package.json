@@ -1,0 +1,17 @@
+{
+  "name": "odysee-live-streams",
+  "version": "1.0.0",
+  "description": "Get current livestreams from Odysee.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "GG2015",
+  "license": "MIT",
+  "homepage": "https://github.com/GlobalGamer2015/lbry-sdk-nodejs#README.md",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "socket.io": "^4.1.3"
+  }
+}
