@@ -50,6 +50,18 @@
                 from {transform: rotate(0deg);}
                 to {transform: rotate(359deg);}
             }
+
+            li.nav-item-github {
+	            margin-top: 0px;
+                background-color: #181021;
+                border-radius: 25px;
+	            padding: 10px;
+	            color: white;
+	            margin-right: 5px;
+                position: absolute;
+                left: 90%;
+                width: 88px;
+            }
         </style>
         <script src="https://cdn.socket.io/4.1.2/socket.io.min.js" integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg" crossorigin="anonymous"></script>
         <script>
@@ -115,13 +127,15 @@
                 <li class="nav-item-home">
 					<a href="https://odysee-chatter.com">Odysee Chatter Bot</a>
                 </li>
+                <li class="nav-item-github" target="_blank">
+                    <a href="https://github.com/GlobalGamer2015/Odysee-Live-Streams"><img src="https://odysee-chatter.com/files/img/GitHub_Logo_White.png"></a>
+                </li>
             </ul>
         </nav>
 
         <div class="container">
             <div class="panel panel-default">
                 <h2 class="title" style="margin-top: -5px;">Streamers live on Odysee</h2>
-                <center><a href="https://github.com/GlobalGamer2015/Odysee-Live-Streams"><img src="https://odysee-chatter.com/files/img/GitHub_Logo_White.png" width="200"></a></center>
             </div>
 
             <div id="streams">
