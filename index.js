@@ -13,6 +13,15 @@ const stream = require('./stream')(io);
 app.get('/', function (req,res) {
 	res.sendFile(path.join(__dirname, './www', 'index.html'));
 })
+app.get('/language.js', function (req,res) {
+    res.sendFile(path.join(__dirname, './www', 'language.js'));
+})
+app.get('/filtered.js', function (req,res) {
+    res.sendFile(path.join(__dirname, './www', 'filtered.js'));
+})
+app.get('/nsfw.js', function (req,res) {
+    res.sendFile(path.join(__dirname, './www', 'nsfw.js'));
+})
 
 listener.on('connection', function (socket) {
     console.log('Connection to client established');
