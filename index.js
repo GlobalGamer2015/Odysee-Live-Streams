@@ -22,6 +22,9 @@ app.get('/filtered.js', function (req,res) {
 app.get('/nsfw.js', function (req,res) {
     res.sendFile(path.join(__dirname, './www', 'nsfw.js'));
 })
+app.get('/viewCount.js', function (req,res) {
+    res.sendFile(path.join(__dirname, './www', 'viewCount.js'));
+})
 
 listener.on('connection', function (socket) {
     console.log('Connection to client established');

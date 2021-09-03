@@ -18,6 +18,7 @@
         <script src="/language.js"></script>
         <script src="/filtered.js"></script>
         <script src="/nsfw.js"></script>
+        <script src="/viewCount.js"></script>
         <style>
             .spinner {
                 position: absolute;
@@ -183,9 +184,14 @@
                     languages(data)
                     nsfw(data)
                     filtered(data)
-                    
-                    document.getElementById('streams').innerHTML += `
-                    <div id="stream_username">
+                    viewCount(data)
+
+                    if(document.getElementById(`stream_${data.claim_id}`)) {
+                        // Do not add
+                    }
+                    else {
+                        document.getElementById('streams').innerHTML += `
+                    <div id="stream_${data.claim_id}">
                         <div class="grid-container">
                             <div class="thumbnail">
                                 <a href="${data.stream_url}" target="_blank"><img class="thumbnail_image" src="${data.thumbnail_url}" onError="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/Odyssey_logo_1.svg/220px-Odyssey_logo_1.svg.png';"></a>
@@ -219,15 +225,16 @@
                                         NSFW: ${is_nsfw}
                                         <span class="tooltiptext" style="width: 160px;">Is not safe for work?</span>
                                     </div>
-                                    <!--<div class="tooltipx">
-                                        Viewers: ${data.viewCount}
+                                    <div class="tooltipx">
+                                        Viewers: ${_viewCount}
                                         <span class="tooltiptext" style="width: 300px;">Viewer numbers may not be accurate.</span>
-                                    </div>-->
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     `;
+                    }
                 });
             }, false);
         </script>
