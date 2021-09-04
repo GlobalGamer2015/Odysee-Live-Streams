@@ -1,5 +1,4 @@
 function viewCount(data) {
-    console.log(data.viewCount)
     if(data.viewCount === undefined) {
         return _viewCount = 0;
     }
