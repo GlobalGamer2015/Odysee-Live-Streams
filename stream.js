@@ -106,92 +106,96 @@ module.exports = function(io) {
 
                         ws = new WS(`wss://sockety.odysee.com/ws/commentron?id=${claim_id}&category=${claim_id}`);
                         ws.addEventListener('message', function (event) {
-                            const commentron = JSON.parse(event.data);
-                            if(commentron.type === "viewers") {
-                                const viewCount = commentron.data.connected;
+                            try {
+                                const commentron = JSON.parse(event.data);
+                                if(commentron.type === "viewers") {
+                                    const viewCount = commentron.data.connected;
 
-                                const streamer = {
-                                    // Channel information
-                                    timestamp: timestamp,
-                                    live: live,
-                                    channel_name: channel_name,
-                                    channelLink: channelLink,
-                                    canonicalUrl: canonicalUrl,
-                                    _name: _name,
-                                    shortUrl: shortUrl,
-                                    claimId: claimId,
-                                    viewCount: viewCount,
+                                    const streamer = {
+                                        // Channel information
+                                        timestamp: timestamp,
+                                        live: live,
+                                        channel_name: channel_name,
+                                        channelLink: channelLink,
+                                        canonicalUrl: canonicalUrl,
+                                        _name: _name,
+                                        shortUrl: shortUrl,
+                                        claimId: claimId,
+                                        viewCount: viewCount,
     
-                                    // Stream Information
-                                    audio_duration: audio_duration,
-                                    author: author,
-                                    bid_state: bid_state,
-                                    certificate: certificate,
-                                    city: city,
-                                    claim_address: claim_address,
-                                    claim_id: claim_id,
-                                    claim_id_list: claim_id_list,
-                                    claim_reference: claim_reference,
-                                    claim_type: claim_type,
-                                    code: code,
-                                    content_type: content_type,
-                                    country: country,
-                                    created_at: created_at,
-                                    description: description,
-                                    duration: duration,
-                                    effective_amount: effective_amount,
-                                    email: email,
-                                    fee: fee,
-                                    fee_address: fee_address,
-                                    fee_currency: fee_currency,
-                                    frame_height: frame_height,
-                                    frame_width: frame_width,
-                                    has_claim_list: has_claim_list,
-                                    height: height,
-                                    id: id,
-                                    is_cert_processed: is_cert_processed,
-                                    is_cert_valid: is_cert_valid,
-                                    is_filtered: is_filtered,
-                                    is_nsfw: is_nsfw,
-                                    language: language,
-                                    latitude: latitude,
-                                    license: license,
-                                    license_url: license_url,
-                                    list_type: list_type,
-                                    longitude: longitude,
-                                    modified_at: modified_at,
-                                    stream_name: stream_name,
-                                    os: os,
-                                    preview: preview,
-                                    publisher_id: publisher_id,
-                                    publisher_sig: publisher_sig,
-                                    release_time: release_time,
-                                    sd_hash: sd_hash,
-                                    source_hash: source_hash,
-                                    source_media_type: source_media_type,
-                                    source_name: source_name,
-                                    source_size: source_size,
-                                    source_url: source_url,
-                                    state: state,
-                                    thumbnail_url: thumbnail_url,
-                                    title: title.substring(0,63), // Limit amount of characters
-                                    transaction_hash_id: transaction_hash_id,
-                                    transaction_hash_update: transaction_hash_update,
-                                    transaction_time: transaction_time,
-                                    type: type,
-                                    valid_at_height: valid_at_height,
-                                    value_as_hex: value_as_hex,
-                                    value_as_json: value_as_json,
-                                    version: version,
-                                    vout: vout,
-                                    vout_update: vout_update,
-                                    website_url: website_url,
+                                        // Stream Information
+                                        audio_duration: audio_duration,
+                                        author: author,
+                                        bid_state: bid_state,
+                                        certificate: certificate,
+                                        city: city,
+                                        claim_address: claim_address,
+                                        claim_id: claim_id,
+                                        claim_id_list: claim_id_list,
+                                        claim_reference: claim_reference,
+                                        claim_type: claim_type,
+                                        code: code,
+                                        content_type: content_type,
+                                        country: country,
+                                        created_at: created_at,
+                                        description: description,
+                                        duration: duration,
+                                        effective_amount: effective_amount,
+                                        email: email,
+                                        fee: fee,
+                                        fee_address: fee_address,
+                                        fee_currency: fee_currency,
+                                        frame_height: frame_height,
+                                        frame_width: frame_width,
+                                        has_claim_list: has_claim_list,
+                                        height: height,
+                                        id: id,
+                                        is_cert_processed: is_cert_processed,
+                                        is_cert_valid: is_cert_valid,
+                                        is_filtered: is_filtered,
+                                        is_nsfw: is_nsfw,
+                                        language: language,
+                                        latitude: latitude,
+                                        license: license,
+                                        license_url: license_url,
+                                        list_type: list_type,
+                                        longitude: longitude,
+                                        modified_at: modified_at,
+                                        stream_name: stream_name,
+                                        os: os,
+                                        preview: preview,
+                                        publisher_id: publisher_id,
+                                        publisher_sig: publisher_sig,
+                                        release_time: release_time,
+                                        sd_hash: sd_hash,
+                                        source_hash: source_hash,
+                                        source_media_type: source_media_type,
+                                        source_name: source_name,
+                                        source_size: source_size,
+                                        source_url: source_url,
+                                        state: state,
+                                        thumbnail_url: thumbnail_url,
+                                        title: title.substring(0,63), // Limit amount of characters
+                                        transaction_hash_id: transaction_hash_id,
+                                        transaction_hash_update: transaction_hash_update,
+                                        transaction_time: transaction_time,
+                                        type: type,
+                                        valid_at_height: valid_at_height,
+                                        value_as_hex: value_as_hex,
+                                        value_as_json: value_as_json,
+                                        version: version,
+                                        vout: vout,
+                                        vout_update: vout_update,
+                                        website_url: website_url,
     
-                                    // Custom
-                                    stream_url: stream_url
-                                };
-
-                                socket.emit('stream', streamer)
+                                        // Custom
+                                        stream_url: stream_url
+                                    };
+                                    socket.emit('stream', streamer)
+                                }
+                            }
+                            catch(err) {
+                                console.log('JSON is not detected.');
                             }
                         });
                     }
