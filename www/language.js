@@ -806,14 +806,4 @@ function languages(data) {
     if(language) {
         return language = data.language;
     }
-
-    if(data.is_filtered == 0) {
-        console.log(is_filtered)
-        return is_filtered = data.is_filtered;
-    }
-
-    if(data.is_nsfw) {
-        console.log(is_nsfw)
-        return isnsfw = data.is_nsfw;
-    }
 }
