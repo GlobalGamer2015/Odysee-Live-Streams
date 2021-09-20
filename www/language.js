@@ -803,7 +803,7 @@ function languages(data) {
     if(data.language == null) {
         return language = "Null";
     }
-    if(language) {
+    else {
         return language = data.language;
     }
 }
