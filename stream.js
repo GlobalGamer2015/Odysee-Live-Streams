@@ -195,7 +195,7 @@ module.exports = function(io) {
                                 }
                             }
                             catch(err) {
-                                console.log('JSON is not detected.');
+                                //console.log('JSON is not detected.');
                             }
                         });
                     }
