@@ -95,8 +95,6 @@ module.exports = function(io) {
                         const transaction_time = stream.data[0].transaction_time;
                         const type = stream.data[0].type;
                         const valid_at_height = stream.data[0].valid_at_height;
-                        const value_as_hex = stream.data[0].value_as_hex;
-                        const value_as_json = stream.data[0].value_as_json;
                         const version = stream.data[0].version;
                         const vout = stream.data[0].vout;
                         const vout_update = stream.data[0].vout_update;
@@ -161,7 +159,7 @@ module.exports = function(io) {
                                         list_type: list_type,
                                         longitude: longitude,
                                         modified_at: modified_at,
-                                        stream_name: stream_name,
+                                        stream_name: stream_name.substring(0,63), // Limit amount of characters,
                                         os: os,
                                         preview: preview,
                                         publisher_id: publisher_id,
@@ -181,8 +179,6 @@ module.exports = function(io) {
                                         transaction_time: transaction_time,
                                         type: type,
                                         valid_at_height: valid_at_height,
-                                        value_as_hex: value_as_hex,
-                                        value_as_json: value_as_json,
                                         version: version,
                                         vout: vout,
                                         vout_update: vout_update,
