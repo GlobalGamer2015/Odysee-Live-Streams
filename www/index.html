@@ -15,46 +15,7 @@
         <link rel="stylesheet" href="https://www.odysee-chatter.com/files/css/magnific-popup.css">                                 
         <link rel="stylesheet" href="https://www.odysee-chatter.com/files/css/templatemo-style.css">                                   
         <link rel="stylesheet" href="https://www.odysee-chatter.com/files/css/index.css">
-        <script src="/language.js"></script>
-        <script src="/filtered.js"></script>
-        <script src="/nsfw.js"></script>
-        <script src="/viewCount.js"></script>
         <style>
-            .spinner {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                height:60px;
-                width:60px;
-                margin:0px auto;
-                -webkit-animation: rotation .6s infinite linear;
-                -moz-animation: rotation .6s infinite linear;
-                -o-animation: rotation .6s infinite linear;
-                animation: rotation .6s infinite linear;
-                border-left:6px solid rgba(0,174,239,.15);
-                border-right:6px solid rgba(0,174,239,.15);
-                border-bottom:6px solid rgba(0,174,239,.15);
-                border-top:6px solid rgba(0,174,239,.8);
-                border-radius:100%;
-            }
-
-            @-webkit-keyframes rotation {
-                from {-webkit-transform: rotate(0deg);}
-                to {-webkit-transform: rotate(359deg);}
-            }
-            @-moz-keyframes rotation {
-                from {-moz-transform: rotate(0deg);}
-                to {-moz-transform: rotate(359deg);}
-            }
-            @-o-keyframes rotation {
-                from {-o-transform: rotate(0deg);}
-                to {-o-transform: rotate(359deg);}
-            }
-            @keyframes rotation {
-                from {transform: rotate(0deg);}
-                to {transform: rotate(359deg);}
-            }
-
             li.nav-item-github {
 	            margin-top: 0px;
                 background-color: #181021;
@@ -67,180 +28,35 @@
                 width: 88px;
             }
 
-            .grid-container {
-                display: grid; 
-                grid-template-columns: 300px 600px; 
-                grid-template-rows: 300px; 
-                gap: 25px 25px; 
-                grid-template-areas: 
-                "thumbnail information"; 
-            }
-            .thumbnail {
-                grid-area: thumbnail;
-                background-color: transparent;
-                border: 3px dashed #241c30;
-                border-right: none;
-                border-radius: 1px;
-            }
-            .information {
-                grid-area: information;
-                background-color: transparent;
-                border: 3px dashed #241c30;
-                border-radius: 1px;
-                border-left: none;
-                margin-bottom: 20px;
-                margin-left: -30px;
-            }
-            .information-data {
-                margin-left: 15px;
-            }
-
-            .tooltipx {
+            .streamers {
+                width: 100%;
+                height: 92vh;
                 position: relative;
-                color: white;
+                border: none;
+                padding: 10px 10px 10px 10px;
             }
 
-            /* Tooltip text */
-            .tooltipx .tooltiptext {
-                visibility: hidden;
-                width: 120px;
-                background-color: #241c30;
-                color: #fff;
-                text-align: center;
-                padding: 6px 0;
-                border-radius: 6px;
-                /* Position the tooltip text - see examples below! */
-                position: absolute;
-                z-index: 1;
-                margin-top: -5px;
-            }
-
-            /* Show the tooltip text when you mouse over the tooltip container */
-            .tooltipx:hover .tooltiptext {
-                visibility: visible;
-            }
-
-            img.thumbnail_image {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                max-width: 100%;
-                max-height: 100%;
-            }
-
-            .led-red {
-                width: 24px;
-                height: 24px;
-                background-color: #F00;
-                border-radius: 50%;
-                box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;
-                -webkit-animation: blinkRed 0.5s infinite;
-                -moz-animation: blinkRed 0.5s infinite;
-                -ms-animation: blinkRed 0.5s infinite;
-                -o-animation: blinkRed 0.5s infinite;
-                animation: blinkRed 0.5s infinite;
-                margin-top: -33px;
-                margin-left: 225px;
-                margin-bottom: -15px;
-            }
-            @-webkit-keyframes blinkRed {
-                from { background-color: #F00; }
-                50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-                to { background-color: #F00; }
-            }
-            @-moz-keyframes blinkRed {
-                from { background-color: #F00; }
-                50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-                to { background-color: #F00; }
-            }
-            @-ms-keyframes blinkRed {
-                from { background-color: #F00; }
-                50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-                to { background-color: #F00; }
-            }
-            @-o-keyframes blinkRed {
-                from { background-color: #F00; }
-                50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-                to { background-color: #F00; }
-            }
-            @keyframes blinkRed {
-                from { background-color: #F00; }
-                50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-                to { background-color: #F00; }
+            .streamers_settings {
+                width: 100%;
+                height: 92vh;
+                position: relative;
+                border: none;
             }
         </style>
-        <script src="https://cdn.socket.io/4.1.2/socket.io.min.js" integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg" crossorigin="anonymous"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                const socket = io();
-
-                socket.emit('load_streams', 'load moar!')
-
-                socket.on('stream', function(data) {
-                    if(document.getElementById('loading')) {
-                        document.getElementById('loading').remove()
-                    }
-
-                    languages(data)
-                    nsfw(data)
-                    filtered(data)
-                    viewCount(data)
-
-                    if(document.getElementById(`stream_${data.claim_id}`)) {
-                        // Do not add
-                    }
-                    else {
-                        document.getElementById('streams').innerHTML += `
-                    <div id="stream_${data.claim_id}">
-                        <div class="grid-container">
-                            <div class="thumbnail">
-                                <a href="${data.stream_url}" target="_blank"><img class="thumbnail_image" src="${data.thumbnail_url}" onError="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/Odyssey_logo_1.svg/220px-Odyssey_logo_1.svg.png';"></a>
-                            </div>
-                            <div class="information">
-                                <div class="information-data">
-                                    <h3>Stream information</h3>
-                                    <div class="led-red"></div>
-                                    <br>
-                                    <div class="tooltipx">
-                                        Title: ${data.title}
-                                        <span class="tooltiptext">Stream title</span>
-                                    </div>
-                                    <div class="tooltipx">
-                                        Streamer: <a href="${data.channelLink}">link</a>
-                                        <span class="tooltiptext">Streamer link</span>
-                                    </div>
-                                    <div class="tooltipx">
-                                        Stream: <a href="${data.stream_url}">link</a>
-                                        <span class="tooltiptext">Stream link</span>
-                                    </div>
-                                    <div class="tooltipx">
-                                        Language: ${language}
-                                        <span class="tooltiptext" style="width: 160px;">Stream language</span>
-                                    </div>
-                                    <div class="tooltipx">
-                                        Filtered: ${is_filtered}
-                                        <span class="tooltiptext" style="width: 160px;">Is filtered?</span>
-                                    </div>
-                                    <div class="tooltipx">
-                                        NSFW: ${is_nsfw}
-                                        <span class="tooltiptext" style="width: 160px;">Is not safe for work?</span>
-                                    </div>
-                                    <div class="tooltipx">
-                                        Viewers: ${_viewCount}
-                                        <span class="tooltiptext" style="width: 300px;">Viewer numbers may not be accurate.</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    `;
-                    }
-                });
-            }, false);
+                const iframe = document.getElementById('iframe');
+                if(iframe.src.includes("streamers")) {
+                    iframe.className = "streamers";
+                }
+                if(iframe.src.includes("streamers_settings")) {
+                    iframe.className = "streamers_settings";
+                }
+            })
         </script>
     </head>
 
-    <body>
+    <body style="overflow: hidden; position: relative;">
         <!-- Nav Bar -->
         <nav class="navbar">
             <ul class="navbar-nav">
@@ -261,24 +77,9 @@
             </ul>
         </nav>
 
-        <div class="container">
-            <div class="panel panel-default">
-                <h2 class="title" style="margin-top: -5px;">Streamers live on Odysee</h2>
-                <p style="text-align: center;">
-                    Hover over text for more information.
-                </p>
-            </div>
-
-            <div id="streams">
-                <div id="loading">
-                    <div class="spinner"></div>
-                </div>
-            </div>
-
-            <footer class="footer">
-                <center><p class="copyright-text">Copyright &copy; 2021 - Odysee Chatter Bot</p></center>
-            </footer>
-        </div>
+        <!--<div class="container">-->
+            <iframe id="iframe" src="/streamers"></iframe>
+        <!--</div>-->
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     	<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
