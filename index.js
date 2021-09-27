@@ -13,17 +13,21 @@ const stream = require('./stream')(io);
 app.get('/', function (req,res) {
 	res.sendFile(path.join(__dirname, './www', 'index.html'));
 })
-app.get('/language.js', function (req,res) {
-    res.sendFile(path.join(__dirname, './www', 'language.js'));
+app.get('/streamers', function (req,res) {
+	res.sendFile(path.join(__dirname, './www', 'streamers.html'));
 })
-app.get('/filtered.js', function (req,res) {
-    res.sendFile(path.join(__dirname, './www', 'filtered.js'));
+app.get('/streamers_settings', function (req,res) {
+	res.sendFile(path.join(__dirname, './www', 'streamers_settings.html'));
 })
-app.get('/nsfw.js', function (req,res) {
-    res.sendFile(path.join(__dirname, './www', 'nsfw.js'));
+
+app.get('/localStorage.js', function (req,res) {
+    res.sendFile(path.join(__dirname, './www', 'localStorage.js'));
 })
-app.get('/viewCount.js', function (req,res) {
-    res.sendFile(path.join(__dirname, './www', 'viewCount.js'));
+app.get('/dataBlocks.js', function (req,res) {
+    res.sendFile(path.join(__dirname, './www', 'dataBlocks.js'));
+})
+app.get('/dataHandler.js', function (req,res) {
+    res.sendFile(path.join(__dirname, './www', 'dataHandler.js'));
 })
 
 listener.on('connection', function (socket) {
