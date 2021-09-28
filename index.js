@@ -10,6 +10,7 @@ const path = require('path');
 
 const stream = require('./stream')(io);
 
+// Main
 app.get('/', function (req,res) {
 	res.sendFile(path.join(__dirname, './www', 'index.html'));
 })
@@ -28,6 +29,17 @@ app.get('/dataBlocks.js', function (req,res) {
 })
 app.get('/dataHandler.js', function (req,res) {
     res.sendFile(path.join(__dirname, './www', 'dataHandler.js'));
+})
+
+// Mobile
+app.get('/mobile', function (req,res) {
+	res.sendFile(path.join(__dirname, './www/mobile', 'index.html'));
+})
+app.get('/mobile/streamers', function (req,res) {
+	res.sendFile(path.join(__dirname, './www/mobile', 'streamers.html'));
+})
+app.get('/mobile/streamers_settings', function (req,res) {
+	res.sendFile(path.join(__dirname, './www/mobile', 'streamers_settings.html'));
 })
 
 listener.on('connection', function (socket) {
