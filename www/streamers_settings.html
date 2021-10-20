@@ -1,742 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="author" content="GG2015">
+    <meta name="description" content="Odysee live streams.">
+    <link rel="icon" href="https://odysee.com/public/favicon-spaceman.png">
 
-        <title>Odysee Chatter Bot</title>
+    <title>Odysee Chatter Bot</title>
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  
-        <link rel="stylesheet" href="https://www.odysee-chatter.com/files/font-awesome-4.5.0/css/font-awesome.min.css">                
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://www.odysee-chatter.com/files/css/hero-slider-style.css">                              
-        <link rel="stylesheet" href="https://www.odysee-chatter.com/files/css/magnific-popup.css">                                 
-        <link rel="stylesheet" href="https://www.odysee-chatter.com/files/css/templatemo-style.css">                                   
-        <link rel="stylesheet" href="https://www.odysee-chatter.com/files/css/index.css">
-        <script src="/localStorage.js"></script>
-        <script src="/dataHandler.js"></script>
-        <style>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/localStorage.js"></script>
+    <script src="/dataHandler.js"></script>
+  </head>
 
-            .modal_main {
-                background-color: #241c30;
-                border-radius: 5px;
-                padding: 30px 50px;
-                margin: auto;
-                width: 70%;
-            }
-
-            /* The switch - the box around the slider */
-            .switch {
-                position: relative;
-                display: inline-block;
-                width: 60px;
-                height: 30px;
-            }
-
-            /* Hide default HTML checkbox */
-            .switch input {
-                opacity: 0;
-                width: 0;
-                height: 0;
-            }
-
-            /* The slider */
-            .slider {
-                position: absolute;
-                cursor: pointer;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: #ccc;
-                -webkit-transition: .4s;
-                transition: .4s;
-            }
-
-            .slider:before {
-                position: absolute;
-                content: "";
-                height: 26px;
-                width: 26px;
-                left: 4px;
-                bottom: 4px;
-                background-color: white;
-                -webkit-transition: .4s;
-                transition: .4s;
-            }
-
-            input:checked + .slider {
-                background-color: #2196F3;
-            }
-
-            input:focus + .slider {
-                box-shadow: 0 0 1px #2196F3;
-            }
-
-            input:checked + .slider:before {
-                -webkit-transform: translateX(26px);
-                -ms-transform: translateX(26px);
-                transform: translateX(26px);
-            }
-
-            /* Rounded sliders */
-            .slider.round {
-                border-radius: 34px;
-            }
-
-            .slider.round:before {
-                border-radius: 50%;
-            }
-
-            .slider.round.disabled {
-                background-color: red;
-            }
-
-            /* width */
-            ::-webkit-scrollbar {
-                width: 10px;
-            }
-            /* Track */
-            ::-webkit-scrollbar-track {
-                background: #f1f1f1;
-            }
-            /* Handle */
-            ::-webkit-scrollbar-thumb {
-                background: #888;
-            }
-            /* Handle on hover */
-            ::-webkit-scrollbar-thumb:hover {
-                background: #555;
-            }
-
-            .streamers_button {
-                margin-top: 4px;
-                background-color: #181021;
-                border-radius: 25px;
-                padding: 10px;
-                color: white;
-                margin-right: 5px;
-                position: absolute;
-                left: 60%;
-                top: 5px;
-                width: 100px;
-            }
-
-            button#update_stream_settings {
-                margin-top: 4px;
-                background-color: #181021;
-                border-radius: 25px;
-                padding: 10px;
-                color: white;
-                margin-right: 5px;
-                position: relative;
-                width: 200px;
-            }
-
-            .tip {
-                margin-top: -2px;
-                margin-bottom: 15px;
-            }
-        </style>
-    </head>
-
-    <body>
-        <div class="panel panel-default">
-            <h2 class="title" style="margin-top: -5px;">Stream Settings</h2>
-            <p style="text-align: center;">
-                Choose what you want to see.
-            </p>
-            <button class="streamers_button" onclick="window.location.href = '/streamers';">Go Back</button>
+  <body>
+    <div class="panel panel-default">
+      <h2 class="title" style="margin-top: -5px;">Stream Settings</h2>
+      <p style="text-align: center;">
+        Choose what you want to see.
+      </p>
+      <button class="streamers_button" onclick="window.location.href = '/streamers';">Go Back</button>
+    </div>
+    <div id="modal" class="modal_main">
+      <form id="StreamSettingsForm">
+        <h3 class="title" style="text-align: left; margin-top: -5px;">The following will possibly return specific data.</h3>
+        <div>
+          <label>Title:</label>
+          <label class="switch">
+            <input id="title" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
         </div>
-        <div id="modal" class="modal_main">
-            <form id="StreamSettingsForm">
-                <h3 class="title" style="text-align: left; margin-top: -5px;">The following will possibly return specific data.</h3>
-                <div>
-                    <label>Title:</label>
-                    <label class="switch">
-                        <input id="title" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
 
-                <div>
-                    <label>Channel Link:</label>
-                    <label class="switch">
-                        <input id="channelLink" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Channel Link:</label>
+          <label class="switch">
+            <input id="channelLink" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
 
-                <div>
-                    <label>Stream Name:</label>
-                    <label class="switch">
-                        <input id="stream_name" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Stream Name:</label>
+          <label class="switch">
+            <input id="stream_name" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
 
-                <div>
-                    <label>Language:</label>
-                    <label class="switch">
-                        <input id="language" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Language:</label>
+          <label class="switch">
+            <input id="language" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
 
-                <div>
-                    <label>Is Filtered:</label>
-                    <label class="switch">
-                        <input id="is_filtered" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Is Filtered:</label>
+          <label class="switch">
+            <input id="is_filtered" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
 
-                <div>
-                    <label>Is NSFW:</label>
-                    <label class="switch">
-                        <input id="is_nsfw" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Is NSFW:</label>
+          <label class="switch">
+            <input id="is_nsfw" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
 
-                <div>
-                    <label>View Count:</label>
-                    <label class="switch">
-                        <input id="viewCount" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>View Count:</label>
+          <label class="switch">
+            <input id="viewCount" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Live:</label>
-                    <label class="switch">
-                        <input id="live" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Live:</label>
+          <label class="switch">
+            <input id="live" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Canonical URL:</label>
-                    <label class="switch">
-                        <input id="canonicalUrl" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Canonical URL:</label>
+          <label class="switch">
+            <input id="canonicalUrl" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Name:</label>
-                    <label class="switch">
-                        <input id="_name" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Name:</label>
+          <label class="switch">
+            <input id="_name" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Short URL:</label>
-                    <label class="switch">
-                        <input id="shortUrl" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Short URL:</label>
+          <label class="switch">
+            <input id="shortUrl" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Claim ID:</label>
-                    <label class="switch">
-                        <input id="claimId" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Claim ID:</label>
+          <label class="switch">
+            <input id="claimId" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Author:</label>
-                    <label class="switch">
-                        <input id="author" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Author:</label>
+          <label class="switch">
+            <input id="author" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Bid State:</label>
-                    <label class="switch">
-                        <input id="bid_state" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Bid State:</label>
+          <label class="switch">
+            <input id="bid_state" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Claim Address:</label>
-                    <label class="switch">
-                        <input id="claim_address" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Claim Address:</label>
+          <label class="switch">
+            <input id="claim_address" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Claim ID:</label>
-                    <label class="switch">
-                        <input id="claim_id" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Claim ID:</label>
+          <label class="switch">
+            <input id="claim_id" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Created At:</label>
-                    <label class="switch">
-                        <input id="created_at" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Created At:</label>
+          <label class="switch">
+            <input id="created_at" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Description:</label>
-                    <label class="switch">
-                        <input id="description" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Description:</label>
+          <label class="switch">
+            <input id="description" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Effective Amount:</label>
-                    <label class="switch">
-                        <input id="effective_amount" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Effective Amount:</label>
+          <label class="switch">
+            <input id="effective_amount" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Fee:</label>
-                    <label class="switch">
-                        <input id="fee" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Fee:</label>
+          <label class="switch">
+            <input id="fee" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Height:</label>
-                    <label class="switch">
-                        <input id="height" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Height:</label>
+          <label class="switch">
+            <input id="height" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Id:</label>
-                    <label class="switch">
-                        <input id="id" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Id:</label>
+          <label class="switch">
+            <input id="id" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Is Cert Processed:</label>
-                    <label class="switch">
-                        <input id="is_cert_processed" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Is Cert Processed:</label>
+          <label class="switch">
+            <input id="is_cert_processed" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Is Cert Valid:</label>
-                    <label class="switch">
-                        <input id="is_cert_valid" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Is Cert Valid:</label>
+          <label class="switch">
+            <input id="is_cert_valid" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>License:</label>
-                    <label class="switch">
-                        <input id="license" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>License:</label>
+          <label class="switch">
+            <input id="license" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>License URL:</label>
-                    <label class="switch">
-                        <input id="license_url" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>License URL:</label>
+          <label class="switch">
+            <input id="license_url" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Modified At:</label>
-                    <label class="switch">
-                        <input id="modified_at" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Modified At:</label>
+          <label class="switch">
+            <input id="modified_at" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Publisher ID:</label>
-                    <label class="switch">
-                        <input id="publisher_id" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Publisher ID:</label>
+          <label class="switch">
+            <input id="publisher_id" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Publisher SIG:</label>
-                    <label class="switch">
-                        <input id="publisher_sig" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Publisher SIG:</label>
+          <label class="switch">
+            <input id="publisher_sig" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Release Time:</label>
-                    <label class="switch">
-                        <input id="release_time" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Release Time:</label>
+          <label class="switch">
+            <input id="release_time" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Thumbnail URL:</label>
-                    <label class="switch">
-                        <input id="thumbnail_url" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Thumbnail URL:</label>
+          <label class="switch">
+            <input id="thumbnail_url" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Transaction Hash ID:</label>
-                    <label class="switch">
-                        <input id="transaction_hash_id" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Transaction Hash ID:</label>
+          <label class="switch">
+            <input id="transaction_hash_id" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Transaction Hash Update:</label>
-                    <label class="switch">
-                        <input id="transaction_hash_update" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Transaction Hash Update:</label>
+          <label class="switch">
+            <input id="transaction_hash_update" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Transaction Time:</label>
-                    <label class="switch">
-                        <input id="transaction_time" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Transaction Time:</label>
+          <label class="switch">
+            <input id="transaction_time" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Type:</label>
-                    <label class="switch">
-                        <input id="type" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Type:</label>
+          <label class="switch">
+            <input id="type" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Valid At Height:</label>
-                    <label class="switch">
-                        <input id="valid_at_height" type="checkbox"><span class="slider round"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Valid At Height:</label>
+          <label class="switch">
+            <input id="valid_at_height" type="checkbox"><span class="slider round"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
 
-                <br>
-                <h3 class="title" style="margin-top: -5px;">The following are not either implemented or not working at times.</h3>
-                <!-- Data that does not work -->
+        <br>
+        <h3 class="title" style="margin-top: -5px;">The following are not either implemented or not working at times.</h3>
+        <!-- Data that does not work -->
   
-                <div>
-                    <label>Audio Duration:</label>
-                    <label class="switch">
-                        <input id="audio_duration" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Audio Duration:</label>
+          <label class="switch">
+            <input id="audio_duration" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Certificate</label>
-                    <label class="switch">
-                        <input id="certificate" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Certificate</label>
+          <label class="switch">
+            <input id="certificate" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>City</label>
-                    <label class="switch">
-                        <input id="city" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>City</label>
+          <label class="switch">
+            <input id="city" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Claim ID List:</label>
-                    <label class="switch">
-                        <input id="claim_id_list" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Claim ID List:</label>
+          <label class="switch">
+            <input id="claim_id_list" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Claim Reference:</label>
-                    <label class="switch">
-                        <input id="claim_reference" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Claim Reference:</label>
+          <label class="switch">
+            <input id="claim_reference" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Claim Type:</label>
-                    <label class="switch">
-                        <input id="claim_type" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Claim Type:</label>
+          <label class="switch">
+            <input id="claim_type" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Code:</label>
-                    <label class="switch">
-                        <input id="code" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Code:</label>
+          <label class="switch">
+            <input id="code" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Content Type:</label>
-                    <label class="switch">
-                        <input id="content_type" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
+        <div>
+          <label>Content Type:</label>
+          <label class="switch">
+            <input id="content_type" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
                         
-                <div>
-                    <label>Country:</label>
-                    <label class="switch">
-                        <input id="country" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-
-                <div>
-                    <label>Duration:</label>
-                    <label class="switch">
-                        <input id="duration" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Email:</label>
-                    <label class="switch">
-                        <input id="email" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Fee Address:</label>
-                    <label class="switch">
-                        <input id="fee_address" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Fee Currency:</label>
-                    <label class="switch">
-                        <input id="fee_currency" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Frame Height:</label>
-                    <label class="switch">
-                        <input id="frame_height" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Frame Width:</label>
-                    <label class="switch">
-                        <input id="frame_width" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Has Claim List:</label>
-                    <label class="switch">
-                        <input id="has_claim_list" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Latitude:</label>
-                    <label class="switch">
-                        <input id="latitude" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>List Type:</label>
-                    <label class="switch">
-                        <input id="list_type" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Longitude:</label>
-                    <label class="switch">
-                        <input id="longitude" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>OS:</label>
-                    <label class="switch">
-                        <input id="os" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Preview</label>
-                    <label class="switch">
-                        <input id="preview" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>SD Hash:</label>
-                    <label class="switch">
-                        <input id="sd_hash" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Source Hash:</label>
-                    <label class="switch">
-                        <input id="source_hash" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Source Media Type:</label>
-                    <label class="switch">
-                        <input id="source_media_type" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Source Name:</label>
-                    <label class="switch">
-                        <input id="source_name" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Source Size:</label>
-                    <label class="switch">
-                        <input id="source_size" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Source URL:</label>
-                    <label class="switch">
-                        <input id="source_url" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>State:</label>
-                    <label class="switch">
-                        <input id="state" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-
-                <div>
-                    <label>Timestamp:</label>
-                    <label class="switch">
-                        <input id="timestamp" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Yout:</label>
-                    <label class="switch">
-                        <input id="vout" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Yout Update:</label>
-                    <label class="switch">
-                        <input id="vout_update" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Website URL:</label>
-                    <label class="switch">
-                        <input id="website_url" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-                        
-                <div>
-                    <label>Version:</label>
-                    <label class="switch">
-                        <input id="version" type="checkbox"><span class="slider round disabled"></span>
-                    </label>
-                    <div class="tip"><small></small></div>
-                </div>
-
-                <br>
-                <button id="update_stream_settings">Update Stream Settings</button>
-            </form>
-
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-
-                    // Stop page reload
-                    var form = document.getElementById("StreamSettingsForm");
-                    form.addEventListener('submit', handleForm);
-                    
-                    function handleForm(event) { 
-                        event.preventDefault();
-                        const form = event.path[0];
-                        localStorageHandler(form);
-                    }
-                })
-            </script>
-
-            <footer class="footer">
-                <center><p class="copyright-text">Copyright &copy; 2021 - Odysee Chatter Bot</p></center>
-            </footer>
+        <div>
+          <label>Country:</label>
+          <label class="switch">
+            <input id="country" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
         </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    	<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
-    	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    	<script src="https://www.odysee-chatter.com/files/js/hero-slider-main.js"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    </body>
+        <div>
+          <label>Duration:</label>
+          <label class="switch">
+            <input id="duration" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Email:</label>
+          <label class="switch">
+            <input id="email" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Fee Address:</label>
+          <label class="switch">
+            <input id="fee_address" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Fee Currency:</label>
+          <label class="switch">
+            <input id="fee_currency" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Frame Height:</label>
+          <label class="switch">
+            <input id="frame_height" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Frame Width:</label>
+          <label class="switch">
+            <input id="frame_width" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Has Claim List:</label>
+          <label class="switch">
+            <input id="has_claim_list" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Latitude:</label>
+          <label class="switch">
+            <input id="latitude" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>List Type:</label>
+          <label class="switch">
+            <input id="list_type" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Longitude:</label>
+          <label class="switch">
+            <input id="longitude" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>OS:</label>
+          <label class="switch">
+            <input id="os" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Preview</label>
+          <label class="switch">
+            <input id="preview" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>SD Hash:</label>
+          <label class="switch">
+            <input id="sd_hash" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Source Hash:</label>
+          <label class="switch">
+            <input id="source_hash" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Source Media Type:</label>
+          <label class="switch">
+            <input id="source_media_type" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Source Name:</label>
+          <label class="switch">
+            <input id="source_name" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Source Size:</label>
+          <label class="switch">
+            <input id="source_size" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Source URL:</label>
+          <label class="switch">
+            <input id="source_url" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>State:</label>
+          <label class="switch">
+            <input id="state" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+
+        <div>
+          <label>Timestamp:</label>
+          <label class="switch">
+            <input id="timestamp" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Yout:</label>
+          <label class="switch">
+            <input id="vout" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Yout Update:</label>
+          <label class="switch">
+            <input id="vout_update" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Website URL:</label>
+          <label class="switch">
+            <input id="website_url" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+                        
+        <div>
+          <label>Version:</label>
+          <label class="switch">
+            <input id="version" type="checkbox"><span class="slider round disabled"></span>
+          </label>
+          <div class="tip"><small></small></div>
+        </div>
+
+        <br>
+        <button id="update_stream_settings">Update Stream Settings</button>
+      </form>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Stop page reload
+          var form = document.getElementById("StreamSettingsForm");
+          form.addEventListener('submit', handleForm);
+                    
+          function handleForm(event) { 
+            event.preventDefault();
+            const form = event.path[0];
+            localStorageHandler(form);
+          }
+        })
+      </script>
+
+      <footer class="footer">
+        <center><p class="copyright-text">Copyright &copy; 2021 - Odysee Chatter Bot</p></center>
+      </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </body>
 </html>

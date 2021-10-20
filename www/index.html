@@ -1,96 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Odysee Chatter Bot</title>
+    <meta name="author" content="GG2015">
+    <meta name="description" content="Odysee live streams.">
+    <link rel="icon" href="https://odysee.com/public/favicon-spaceman.png">
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  
-        <link rel="stylesheet" href="https://www.odysee-chatter.com/files/font-awesome-4.5.0/css/font-awesome.min.css">                
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Odysee Chatter Bot</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://www.odysee-chatter.com/files/css/hero-slider-style.css">                              
-        <link rel="stylesheet" href="https://www.odysee-chatter.com/files/css/magnific-popup.css">                                 
-        <link rel="stylesheet" href="https://www.odysee-chatter.com/files/css/templatemo-style.css">                                   
-        <link rel="stylesheet" href="https://www.odysee-chatter.com/files/css/index.css">
-        <style>
-            li.nav-item-github {
-	            margin-top: 0px;
-                background-color: #181021;
-                border-radius: 25px;
-	            padding: 10px;
-	            color: white;
-	            margin-right: 5px;
-                position: absolute;
-                left: 90%;
-                width: 88px;
-            }
+    <link rel="stylesheet" href="/css/index.css">
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const iframe = document.getElementById('iframe');
 
-            .streamers {
-                width: 100%;
-                height: 92vh;
-                position: relative;
-                border: none;
-                padding: 10px 10px 10px 10px;
-            }
-
-            .streamers_settings {
-                width: 100%;
-                height: 92vh;
-                position: relative;
-                border: none;
-            }
-        </style>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const iframe = document.getElementById('iframe');
-
-                if(navigator.userAgent.includes("iPhone") || navigator.userAgent.includes("Mobile") || navigator.userAgent.includes("Android")) {
-                    window.location.href = "/mobile"
-                }
-                else {
-                    iframe.src = "/streamers";
-                }
+        if(navigator.userAgent.includes("iPhone") || navigator.userAgent.includes("Mobile") || navigator.userAgent.includes("Android")) {
+          window.location.href = "/mobile"
+        }
+        else {
+          iframe.src = "/streamers";
+        }
                 
-                if(iframe.src.includes("streamers")) {
-                    iframe.className = "streamers";
-                }
-                if(iframe.src.includes("streamers_settings")) {
-                    iframe.className = "streamers_settings";
-                }
-            })
-        </script>
-    </head>
+        if(iframe.src.includes("streamers")) {
+          iframe.className = "streamers";
+        }
+        if(iframe.src.includes("streamers_settings")) {
+          iframe.className = "streamers_settings";
+        }
+      })
+    </script>
+  </head>
 
-    <body style="overflow: hidden; position: relative;">
-        <!-- Nav Bar -->
-        <nav class="navbar">
-            <ul class="navbar-nav">
-                <li class="nav-item-do">
-                    <a href="https://www.digitalocean.com/?refcode=2b5167b5ded1&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=CopyPaste" target="_blank">
-                        <img src="https://odysee-chatter.com/files/img/DO_Powered_by_Badge_blue.svg" alt="digitalocean">
-                    </a>
-                </li>
-                <li class="nav-item-status">
-                    <a href="https://odyseechatter.statuspage.io/">Service Status</a>
-                </li>
-                <li class="nav-item-home">
+  <body style="overflow: hidden; position: relative;">
+    <!-- Nav Bar -->
+    <nav class="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item-do">
+          <a href="https://www.digitalocean.com/?refcode=2b5167b5ded1&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=CopyPaste" rel="noreferrer" target="_blank">
+            <img src="https://odysee-chatter.com/files/img/DO_Powered_by_Badge_blue.svg" alt="digitalocean">
+          </a>
+        </li>
+        <li class="nav-item-status">
+          <a href="https://odyseechatter.statuspage.io/">Service Status</a>
+        </li>
+        <li class="nav-item-home">
 					<a href="https://odysee-chatter.com">Odysee Chatter Bot</a>
-                </li>
-                <li class="nav-item-github" target="_blank">
-                    <a href="https://github.com/GlobalGamer2015/Odysee-Live-Streams"><img src="https://odysee-chatter.com/files/img/GitHub_Logo_White.png"></a>
-                </li>
-            </ul>
-        </nav>
+        </li>
+        <li class="nav-item-github" target="_blank">
+          <a href="https://github.com/GlobalGamer2015/Odysee-Live-Streams"><img alt="github" src="https://odysee-chatter.com/files/img/GitHub_Logo_White.png"></a>
+        </li>
+      </ul>
+    </nav>
 
-        <iframe id="iframe" src=""></iframe>
+    <iframe title="streamers" id="iframe" src=""></iframe>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    	<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script>
-    	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    	<script src="https://www.odysee-chatter.com/files/js/hero-slider-main.js"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </body>
 </html>

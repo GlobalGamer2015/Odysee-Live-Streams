@@ -100,7 +100,7 @@ module.exports = function(io) {
                         const vout_update = stream.data[0].vout_update;
                         const website_url = stream.data[0].website_url; // Returns as null
 
-                        const stream_url = `${channelLink}/${stream_name}`;
+                        const stream_url = `${channelLink.replace('#', ':')}/${stream_name}`;
 
                         ws = new WS(`wss://sockety.odysee.com/ws/commentron?id=${claim_id}&category=${claim_id}`);
                         ws.addEventListener('message', function (event) {
